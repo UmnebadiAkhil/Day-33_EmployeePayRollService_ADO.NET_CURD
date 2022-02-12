@@ -1,4 +1,4 @@
-create procedure dbo.SqlProcedureName
+	create procedure dbo.payroll_service
 	@EmployeeId int ,
 	@EmployeeName varchar(150),
 	@PhoneNumber varchar(10),

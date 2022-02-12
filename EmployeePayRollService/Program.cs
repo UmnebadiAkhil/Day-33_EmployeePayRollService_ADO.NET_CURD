@@ -14,13 +14,15 @@ namespace EmployeePayrollADO.Net
             repository.DataBaseConnection(); // UC1 Ensuring the database connection using the sql connection string
             repository.GetAllEmployeeData(); //UC2
 
-            //AddRecordInput();//UC2 add Record
+            AddRecordInput();//UC2 add Record
 
-            //repository.UpdateBasicPay("Risa", 3000000);//UC3 update BasicPay where name is Terisa table 
+            repository.UpdateBasicPay("Risa", 3000000);//UC3 update BasicPay where name is Terisa table 
 
-            //repository.UpdatedSalaryFromDatabase("Terisa"); //UC4
+            repository.UpdatedSalaryFromDatabase("Terisa"); //UC4
 
             repository.EmployeesFromForDateRange("2020-01-15"); //UC5
+
+            repository.FindGroupedByGenderRecord("F");//UC6
 
             Console.ReadLine();
         }
