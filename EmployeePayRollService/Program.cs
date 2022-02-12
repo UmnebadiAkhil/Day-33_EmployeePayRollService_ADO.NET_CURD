@@ -24,6 +24,8 @@ namespace EmployeePayrollADO.Net
 
             repository.FindGroupedByGenderRecord("F");//UC6
 
+            repository.InsertIntoMultipleTablesWithTransactions(); //UC7
+
             Console.ReadLine();
         }
         public static void AddRecordInput()
