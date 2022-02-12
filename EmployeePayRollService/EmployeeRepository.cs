@@ -4,13 +4,14 @@ using System.Data.SqlClient;
 namespace EmployeePayRollService
 {
     public class EmployeeRepository
-    {  /* UC1:- Ability to create a payroll service database and have C# program connect to database.
+    { 
+        /* UC1:- Ability to create a payroll service database and have C# program connect to database.
                 - Use the payroll_service database created in MSSQL.
                 - Install System.Data.SqlClient Package.
                 - Check if the database connection to payroll_service mssql DB is established.
         */
+        public static string connectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"; //Specifying the connection string from the sql server connection.
 
-         public static string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=payroll_service;Integrated Security=True"; //Specifying the connection string from the sql server connection.
 
         SqlConnection connection = new SqlConnection(connectionString); // Establishing the connection using the Sqlconnection.  
 
@@ -23,7 +24,6 @@ namespace EmployeePayRollService
                 using (connection)  //using SqlConnection
                 {
                     Console.WriteLine($"Connection is created Successful {now}"); //print msg
-
                 }
                 connection.Close(); //close connection
             }
@@ -33,7 +33,6 @@ namespace EmployeePayRollService
             }
             return true;
         }
-
 
         /* UC2:- Ability for Employee Payroll Service to retrieve the Employee Payroll from the Database.
                  - Using ODBC read the employee payroll data from the database.
@@ -145,6 +144,41 @@ namespace EmployeePayRollService
             }
 
         }
+
+        /* UC3:- Ability to update the salary i.e. the base pay for Employee 
+                Terisa to 3000000.00 and sync it with Database.
+                - Update the employee payroll in the database.
+                - Update the Employee Payroll Object with the Updated Salary.
+                - Compare Employee Payroll Object with DB to pass the MSTest Test.
+        */
+        public bool UpdateBasicPay(string EmployeeName, double BasicPay)
+        {
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    string query = @"update dbo.payroll_service set BasicPay=@inputBasicPay where EmployeeName=@inputEmployeeName";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@inputBasicPay", BasicPay); //parameters transact SQl stament or store procedure
+                    command.Parameters.AddWithValue("@inputEmployeeName", EmployeeName);
+                    var result = command.ExecuteNonQuery(); //ExecuteNonQuery and store result
+                    Console.WriteLine("Record Update Successfully");
+                    connection.Close();
+                    GetAllEmployeeData(); // call method and show record
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
+        }
+
 
 
     }

@@ -4,7 +4,7 @@ namespace EmployeePayrollADO.Net
 {
     class Program
     {
-      
+
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Employee Payroll Services Using ADO.NET Problem");
@@ -16,30 +16,39 @@ namespace EmployeePayrollADO.Net
 
             //AddRecordInput();//UC2 add Record
 
+            repository.UpdateBasicPay("Risa", 3000000);//UC3 update BasicPay where name is Terisa table 
+
             Console.ReadLine();
         }
         public static void AddRecordInput()
         {
-            EmployeeRepository repository = new EmployeeRepository();//Creating a object of EmployeeRepository class.
-            EmployeeModel model = new EmployeeModel();// Adding Employee To Database
-            DateTime now = DateTime.Now;
-            model.EmployeeId = 1;
-            model.EmployeeName = "Akhil";
-            model.PhoneNumber = "8904839805";
-            model.Address = "Sirugapuram";
-            model.Department = "HR";
-            model.Gender = "M";
-            model.BasicPay = 80000;
-            model.Deductions = 1000;
-            model.TaxablePay = 1800;
-            model.Tax = 800;
-            model.NetPay = 200;
-            model.StartDate = now;
-            model.City = "Bangalore";
-            model.Country = "IN";
+            try
+            {
+                EmployeeRepository repository = new EmployeeRepository();//Creating a object of EmployeeRepository class.
 
-            Console.WriteLine(repository.AddEmployee(model) ? "Record Successfully Inserted On Table" : "Failed"); //Conditional (Ternary) operator
-                                                                                                                   // repository.GetAllEmployeeData(); //call method to show table record
+                EmployeeModel model = new EmployeeModel();// Adding Employee To Database
+                DateTime now = DateTime.Now;
+                model.EmployeeId = 4;
+                model.EmployeeName = "Risa";
+                model.PhoneNumber = "1234567891";
+                model.Address = "Mumbai";
+                model.Department = "HR";
+                model.Gender = "F";
+                model.BasicPay = 20000;
+                model.Deductions = 2000;
+                model.TaxablePay = 100;
+                model.Tax = 200;
+                model.NetPay = 1800;
+                model.StartDate = now;
+                model.City = "Mumbai";
+                model.Country = "IN";
+
+                repository.AddEmployee(model);  //call AddEmployee method and pass model values       
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
