@@ -179,7 +179,38 @@ namespace EmployeePayRollService
             return true;
         }
 
+        /*UC4:- Ability to update the salary i.e. the base pay for Employee.
+              Terisa to 3000000.00 and sync it with Database using JDBC Prepared Statement.
+              - Update the employee payroll in the database.
+              - Update the Employee Payroll Object with the Updated Salary.
+              - Compare Employee Payroll Object with DB to pass the MSTest Test.
+        */
+        public double UpdatedSalaryFromDatabase(string EmployeeName)
+        {
 
+            string cconnectionString = @"Data Source=DESKTOP-D8GLB66\SQLEXPRESS;Initial Catalog=Payroll_Service;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"; //Specifying the connection string from the sql server connection.
+
+            SqlConnection connection = new SqlConnection(cconnectionString);
+            try
+            {
+                using (connection)
+                {
+                    string query = @"select BasicPay from dbo.payroll_service where EmployeeName=@inputEmployeeName";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    connection.Open();
+                    command.Parameters.AddWithValue("@inputEmployeeName", EmployeeName);
+                    return (double)command.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
 
     }
 }

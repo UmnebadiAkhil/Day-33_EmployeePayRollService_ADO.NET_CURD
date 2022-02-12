@@ -16,7 +16,9 @@ namespace EmployeePayrollADO.Net
 
             //AddRecordInput();//UC2 add Record
 
-            repository.UpdateBasicPay("Risa", 3000000);//UC3 update BasicPay where name is Terisa table 
+            //repository.UpdateBasicPay("Risa", 3000000);//UC3 update BasicPay where name is Terisa table 
+
+            repository.UpdatedSalaryFromDatabase("Terisa"); //UC4
 
             Console.ReadLine();
         }
