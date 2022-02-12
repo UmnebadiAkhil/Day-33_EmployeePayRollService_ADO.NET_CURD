@@ -26,6 +26,8 @@ namespace EmployeePayrollADO.Net
 
             repository.InsertIntoMultipleTablesWithTransactions(); //UC7
 
+            repository.RetrieveEmployeeDetailsFromMultipleTables();//UC8
+
             Console.ReadLine();
         }
         public static void AddRecordInput()
