@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayRollService", "EmployeePayRollService.csproj", "{669722F5-9F5A-4D2B-ABAE-70DC70279B93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeePayRollService", "EmployeePayRollService.csproj", "{669722F5-9F5A-4D2B-ABAE-70DC70279B93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTest_Payroll_service", "..\NUnitTest_Payroll_service\NUnitTest_Payroll_service.csproj", "{ED1D4174-EE6B-4632-8DD1-47C8EF527610}"
+	ProjectSection(ProjectDependencies) = postProject
+		{669722F5-9F5A-4D2B-ABAE-70DC70279B93} = {669722F5-9F5A-4D2B-ABAE-70DC70279B93}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{669722F5-9F5A-4D2B-ABAE-70DC70279B93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{669722F5-9F5A-4D2B-ABAE-70DC70279B93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{669722F5-9F5A-4D2B-ABAE-70DC70279B93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED1D4174-EE6B-4632-8DD1-47C8EF527610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED1D4174-EE6B-4632-8DD1-47C8EF527610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED1D4174-EE6B-4632-8DD1-47C8EF527610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED1D4174-EE6B-4632-8DD1-47C8EF527610}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
